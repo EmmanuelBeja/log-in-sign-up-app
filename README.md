@@ -1,2 +1,2 @@
 # log-in-sign-up-app
-simple validation and authentication node app using passport
+simple user validation and authentication node app using passport and express-validator
