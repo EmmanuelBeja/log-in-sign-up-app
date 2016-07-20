@@ -16,20 +16,25 @@ router.get('/login',function(req,res){
 
 //Register user
 router.post('/register',function(req,res){
-  var name=req.body.name;
-  var username=req.body.username;
+  var fname=req.body.fname;
+  var lname=req.body.lname;
   var email=req.body.email;
+  var phonenumber=req.body.phonenumber;
   var username=req.body.username;
   var password=req.body.password;
   var password2=req.body.password2;
 
   //validation
-  req.checkBody('name','name is required').notEmpty();
-  req.checkBody('username','username is required').notEmpty();
+  req.checkBody('fname','First Name is required').notEmpty();
+  req.checkBody('lname','Last Name is required').notEmpty();
+  req.checkBody('username','Username is required').notEmpty();
   req.checkBody('email','Email is required').notEmpty();
   req.checkBody('email','Email is not valid').isEmail();
-  req.checkBody('password','password is required').notEmpty();
-  req.checkBody('password2','password do not match').equals(req.body.password);
+  req.checkBody('phonenumber','Phone number is required').notEmpty();
+  req.checkBody('phonenumber','Phone Number is not valid').isNumeric();
+  req.checkBody('password','Password is required').notEmpty();
+  req.checkBody('password', 'Password should be 8 to 20 characters').len(8, 20);
+  req.checkBody('password2','PasswordS do not match').equals(req.body.password);
 
   var errors=req.validationErrors();
 
@@ -42,9 +47,11 @@ res.render('register',{
 else {
   console.log('You have no register errors');
   var newUser=new User({
-    name:name,
-    username:username,
-    email:email,
+    fname: fname,
+    name: lname,
+    username: username,
+    email: email,
+    phonenumber: phonenumber,
     password:password
   });
   User.createUser(newUser,function(err, user){

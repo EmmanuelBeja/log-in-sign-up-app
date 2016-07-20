@@ -14,10 +14,13 @@ var UserSchema=mongoose.Schema({
   email:{
     type:String
   },
-  firstname:{
+  phonenumber:{
+    type:Number
+  },
+  fname:{
     type:String
   },
-  surname:{
+  lname:{
     type:String
   }
 });
