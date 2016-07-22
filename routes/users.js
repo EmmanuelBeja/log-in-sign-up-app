@@ -36,19 +36,19 @@ router.post('/register',function(req,res){
   req.checkBody('password', 'Password should be 8 to 20 characters').len(8, 20);
   req.checkBody('password2','PasswordS do not match').equals(req.body.password);
 
-  var errors=req.validationErrors();
+  var errors = req.validationErrors();
 
-if (errors){
+if (errors.length > 0){
   console.log('You have errors');
 res.render('register',{
-  errors:errors
+  errors: errors
 });
 }
 else {
   console.log('You have no register errors');
   var newUser=new User({
     fname: fname,
-    name: lname,
+    lname: lname,
     username: username,
     email: email,
     phonenumber: phonenumber,
