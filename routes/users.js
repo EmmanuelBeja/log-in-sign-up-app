@@ -48,7 +48,7 @@ else {
   console.log('You have no register errors');
   var newUser=new User({
     fname: fname,
-    name: lname,
+    lname: lname,
     username: username,
     email: email,
     phonenumber: phonenumber,
