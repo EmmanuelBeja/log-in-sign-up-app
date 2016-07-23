@@ -21,8 +21,7 @@ var app = express();
 
 //view engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout:'layout'}));
-app.set('view engine', 'handlebars');
+app.set('view engine', 'ejs');
 
 //body-parser and cokie-parser middleware
 app.use(bodyParser.json());
