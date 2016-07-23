@@ -1,17 +1,10 @@
-<link rel="stylesheet" href="/css/bootstrap.css"/> <!-- load bootstrap css -->
-<link rel="stylesheet" href="/css/style.css"/>
-<div class="container">
-<div class="header clearfix">
-  <h2 class="text-muted"><strong>Swahilibox Consultancy</strong></h2>
-</div>
+
 <h2 class="page-header">Register</h2>
-<div class="row">
-  <div class="col-lg-12 ">
-    <% for(i = 0; i < errors.length; i++){ %>
-    <%= errors[i] %>
-    <%}%>
-
-
+{{#if errors}}
+    {{#each errors}}
+      <div class="alert alert-danger">{{msg}}</div>
+    {{/each}}
+{{/if}}
 <form method="post" action="/users/register">
   <div class="form-group">
     <label>First Name</label>
@@ -41,10 +34,6 @@
     <label>Confirm Password</label>
     <input type="password" class="form-control" placeholder="Confirm Password" name="password2">
   </div></br>
-    <button type="submit" class="btn btn-default btn-success btn-round">Submit</button>
+    <button type="submit" class="btn btn-default">Submit</button>
   </br></br></br>
- <p>Already have an account? <a href="/users/login">Login</a></p></br></br>
  </form>
- </div>
- </div>
- </div>

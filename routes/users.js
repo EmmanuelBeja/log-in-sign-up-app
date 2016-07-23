@@ -36,12 +36,12 @@ router.post('/register',function(req,res){
   req.checkBody('password', 'Password should be 8 to 20 characters').len(8, 20);
   req.checkBody('password2','PasswordS do not match').equals(req.body.password);
 
-  var errors = req.validationErrors();
+  var errors=req.validationErrors();
 
-if (errors.length > 0){
+if (errors){
   console.log('You have errors');
 res.render('register',{
-  errors: errors
+  errors:errors
 });
 }
 else {
